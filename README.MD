@@ -83,7 +83,7 @@ Para ser atualizado a cada modificação em determinado arquivo informado, utili
   },
 ```
 
-#### BACK END -> API RESTful
+#### API RESTful
 Que nada mais é que uma estrutura para acessar vários tipos de entidades através dela para o nosso sistema.
 localhost:2222/users
 localhost:2222/clients
