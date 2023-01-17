@@ -141,7 +141,7 @@ Se estiver utilizando o SQLite, ele irá guardar as informações via arquivo, q
 npx prisma studio
 ```
 
-## CORS
+### CORS
 
 Basicamente, um CORS é utilizado para interpretar que esse determinado backend será utilizado por determinado frontend. Para iniciar essa aplicação, execute:
 
