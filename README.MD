@@ -4,7 +4,9 @@
 
 ### Para inicializar o projeto, utilize do comando:
 
+```
 npm init -y
+```
 
 ### Este irá criar o package.json do seu projeto. Onde salva as dependencias dos nossos projetos.
 
