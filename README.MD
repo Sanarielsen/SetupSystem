@@ -2,7 +2,7 @@
 
 ## Backend
 
-## Para inicializar o projeto, utilize do comando:
+### Para inicializar o projeto, utilize do comando:
 
 npm init -y
 
@@ -115,7 +115,7 @@ Basicamente, um CORS é utilizado para interpretar que esse determinado backend 
 
 npm i @fastify/cors
 
-# Front-End
+## Front-End
 
 Para criação do projeto, será necessário a utização de uma biblioteca para baixar o projeto, através do seguinte código:
 
@@ -177,7 +177,7 @@ E a segunda linha para que seja possivel usá-lo dentro do arquivo .html base do
 
 Resumidamente, o tailwind permite que colocamos algumas propriedades css dentro do proprio className do componente.
 
-# Mobile
+## Mobile
 
 Com React-Native é possivel criar aplicações para o android, IOS e outras...
 
