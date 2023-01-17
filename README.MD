@@ -89,11 +89,11 @@ localhost:2222/users
 localhost:2222/clients
 
 #### Rotas possíveis:
-Get -> Busca de uma ou lista de informações
-Post -> Criar um recurso novo
-Put -> Alterar um recurso já existente por completo.
-Patch -> Alterar um recurso já existente em uma parte dela.
-Delete -> Deleta um recurso já existente em parte ou por completo.
++ Get -> Busca de uma ou lista de informações
++ Post -> Criar um recurso novo
++ Put -> Alterar um recurso já existente por completo.
++ Patch -> Alterar um recurso já existente em uma parte dela.
++ Delete -> Deleta um recurso já existente em parte ou por completo.
 
 Para utilizar banco de dados dentro da API, será utilizado a biblioteca chamado "sql2". Ou é usado os famosos ORM que um deles pode ser o "prisma.io".
 
@@ -163,9 +163,9 @@ React é um framework para desenvolver interfaces para o usuário. Dentro do arq
 
 O arquivo "app.tsx" normalmente possui a primeira chamada da aplicação a ser desenvolvida, quando se inicia o desenvolvimento, pode-se apagar o seu conteúdo e criar o seu próprio. Inclusive os arquivos CSS gerados e a pasta "assets" dentro de "src" mantendo a seguinte estrutura:
 
-App.tsx
-main.tsx
-vite-env.d.ts
++ App.tsx
++ main.tsx
++ vite-env.d.ts
 
 Ao criar componentes, SEMPRE crie o nome do componente com a primeira letra mauiscula.
 
@@ -173,12 +173,13 @@ Na criação de componentes, quando passamos parametros para a criação deste, 
 
 Ao exibir uma variavel dentro de um contexto de um componente, use {} ou ${} se for dentro de uma string com acento circonfluxo.
 Exemplo: 
+
 ```
 <p> { variavel } </p>
 ```
 
-Componente: Reaproveitar ou Isolar um código
-Propriedade: Uma informação enviada para modificar um componente visual ou comportamentalmente
++ Componente: Reaproveitar ou Isolar um código
++ Propriedade: Uma informação enviada para modificar um componente visual ou comportamentalmente
 
 Para estilização da aplicação atual, será utilizada as seguintes ferramentas:
 
@@ -186,9 +187,9 @@ Para estilização da aplicação atual, será utilizada as seguintes ferramenta
 npm i tailwindcss postcss autoprefixer
 ```
  
-postcss: Para automatização de tarefas dentro do css.
-tailwindcss: Plugin do postcss para atribuição de classes com atributos nos elementos.
-autoprefixer: Adiciona prefixos das propriedades usadas que não são suportadas em todos os navegadores para que estas sejam interpretadas corretamente.
++ postcss: Para automatização de tarefas dentro do css.
++ tailwindcss: Plugin do postcss para atribuição de classes com atributos nos elementos.
++ autoprefixer: Adiciona prefixos das propriedades usadas que não são suportadas em todos os navegadores para que estas sejam interpretadas corretamente.
 
 Após terminar de instalar as ferramentas, utilize do seguinte comando para configurar as variaveis locais do tailwind no projeto:
 
@@ -247,15 +248,15 @@ npx create-expo-app nome-do-projeto --template
 Assim que executar esse comando, selecione a opção "Blank (Javascript)"
 
 Estrutura da aplicação após o comando:
-assets -> aonde estão as imagens relacionadas aos componentes do projeto
-node_modules -> Os arquivos correspondentes as instalações de frameworks.
-gitignore -> São as extensões ignoradas ao subir o arquivo para a aplicação git utilizada.
-app.json -> Informações da aplicação, como por exemplo: nome, icone e versão.
-App.tsx -> Primeiro arquivo executado pelo react-native
-babel.config.js -> Algumas configurações básicas para execução da aplicação.
-package-lock.json -> Controle de versionamento das bibliotecas do node_modules.
-package.json -> Controle de versionamento das bibliotecas instaladas para desenvolvimento e/ou interpretação do código lido.
-tsconfig.json -> Algumas outras configurações para execução da aplicação.
++ assets -> aonde estão as imagens relacionadas aos componentes do projeto
++ node_modules -> Os arquivos correspondentes as instalações de frameworks.
++ gitignore -> São as extensões ignoradas ao subir o arquivo para a aplicação git utilizada.
++ app.json -> Informações da aplicação, como por exemplo: nome, icone e versão.
++ App.tsx -> Primeiro arquivo executado pelo react-native
++ babel.config.js -> Algumas configurações básicas para execução da aplicação.
++ package-lock.json -> Controle de versionamento das bibliotecas do node_modules.
++ package.json -> Controle de versionamento das bibliotecas instaladas para desenvolvimento e/ou interpretação do código lido.
++ tsconfig.json -> Algumas outras configurações para execução da aplicação.
 
 Para executar a aplicação, use o seguinte comando:
 
