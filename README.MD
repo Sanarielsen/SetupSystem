@@ -260,7 +260,48 @@ Estrutura da aplicação após o comando:
 
 Para executar a aplicação, use o seguinte comando:
 
+``
+npx expo start
+``
 
+Ao fazer isso, ele irá gerar um QR Code que poderá ser lido através do Expo GO baixado em seu dispositivo e assim executar a aplicação em seu dispositivo.
+
++ View é algo similar a <div>
++ Text é algo similar ao <h1> ou <p>
++ StatusBar é a barra superior com os icones das modificações, bateria, sinal...
+
+Para o uso do CSS, é parecido com o uso dentro do styled components, através de uma variável que receberá o código css:
+
+``
+<View style={styles.container}> context </View>
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+``
+Obs: Não é necessário atribuir o * *display: flex* *, pois os componentes já estão pré-configurados assim por padrão.
+
+Quando iniciar uma alteração que houve grandes mudanças (bundle re-executado), re-execute o servidor com essa alteração no código:
+
+``
+npx expo start --clear
+``
+Obs: Para que o fundo da imagem combine com o fundo da aplicação, foi adicionada a mesma cor para este, dentro do arquivo **app.json** na sessão de *splash* na opção **backgroundColor**, atribuindo o seguinte valor: *#09090A*
+
+#### Fonte
+
+Para atribuir a fonte *inter*, utilize do seguinte código:
+
+``
+npx expo install expo-font @expo-google-fonts/inter
+``
+
+Obs: qualquer dúvida, utilize a documentação do expo: https://docs.expo.dev/guides/using-custom-fonts/
 
 
 
