@@ -97,6 +97,8 @@ localhost:2222/clients
 
 Para utilizar banco de dados dentro da API, será utilizado a biblioteca chamado **sql2**. Ou é usado os famosos ORM que um deles pode ser o **prisma.io**.
 
+Quando escrevemos uma consulta na mão dentro da rota ao invés de usar o ORM para fazer isso, chamamos isso de RAW.
+
 ##### Para isso, será instalado a dependencia correspondente a ele:
 
 ```
@@ -260,6 +262,27 @@ Exemplo:
 + **Componente:** Reaproveitar ou Isolar um código
 + **Propriedade:** Uma informação enviada para modificar um componente visual ou comportamentalmente
 
+Quando se cria um componente, existe a possibilidade de passar uma função dentro de uma propriedade, porém, não podemos passá-la em formato de execução, porque se não, não passaremos a referencia e sim o valor resultado, exemplo:
+
+```
+//Passa a função como referencia a outro componente
+onClick={submitInfo}
+```
+```
+//Passa o resultado da função como referencia a outro componente
+onClick={submitInfo()}
+```
+
+#### Imperativa e Declarativa
+
+Imperativa -> Passa exatamente o que a aplicação precisa fazer para fazer determinada ação.
+Ex: Quando temos um modal e usamos a DOM para exibí-lo dentro da página atual.
+
+Declarativa -> Cria-se uma condição e reage a essa para realizar uma operação.
+Ex: Quando temos um modal e ele só renderiza em tela quando a variável atrelada a ele é cumprida.
+
+#### Tailwind
+
 Para estilização da aplicação atual, será utilizada as seguintes ferramentas:
 
 ```
@@ -315,6 +338,16 @@ npm i phosphor-react
 #### DayJs
 
 Também utilizado no front para tratativa de datas.
+
+#### Radix-ui
+
+É um conjunto de elementos já construídos e pensados com acessibilidade para a sua aplicação assim como o bootstrap e o Material UI são.
+
+Para instalar em especifico um elemento, é necessário usar esse código: (Mas nada lhe impede de baixar a biblioteca inteira)
+
+```
+npm install @radix-ui/react-dialog
+```
 
 ## Mobile
 
