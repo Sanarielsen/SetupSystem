@@ -141,6 +141,67 @@ Se estiver utilizando o SQLite, ele irá guardar as informações via arquivo, q
 npx prisma studio
 ```
 
+**@@unique([id]))** é a mesma coisa que criar um *indice* para uma coluna na tabela do banco.
+
+#### Automatização de Foreign's keys
+
+Quando for criada os campos correspondentes as foreign key nas tabelas, aperte CTRL+Shift+P e execute o comando "Format Document" para que essas configurações sejam definidas no arquivo **schema.prisma**
+
+Obs: Caso queira adicionar uma forma de formatação via salvamento, ative a opção utilizando o mesmo comando, porém, abrindo o *settings.json*, na linha 79, dando a opção *editor.formatOnSave* como *true*
+
+#### Prisma Entity Relationship Diagram Generator
+
+https://www.npmjs.com/package/prisma-erd-generator
+
+1) Execute a linha de comando da documentação (npm i -D prisma-erd-generator @mermaid-js/mermaid-cli)
+
+2) Adicione essa linha de comando no arquivo schema.prisma
+```
+generator erd {
+  provider = "prisma-erd-generator"
+}
+```
+3) Inicialize o servidor com o generate:
+```
+npx prisma generate
+```
+4) Abra o arquivo ERD.svg dentro do navegador e visualize o diagrama de entidades do atual banco criado.
+
+#### Seed do Banco de dados (Dados exemplo)
+
+https://www.prisma.io/docs/guides/database/seed-database
+
+Utilize a sessão "Example seed scripts" da documentação, especificadamente, o conteúdo do arquivo *seed.ts* que deve ser criado dentro da pasta *prisma*
+
+E adicionar a seguinte linha dentro do package.json
+
+```
+"prisma": {
+  "seed": "tsx prisma/seed.ts"
+}
+```
+
+E assim, para executar o seguinte exemplo dentro de uma tabela do banco do método main (que deve ser apagado completamente daquele conteúdo que vem no exemplo da documentação):
+
+```
+await prisma.habit.create( {
+
+    data: {
+        title: 'Beber 2L de água',
+        created_at: new Date('2023-01-10T00:00:00.000z')
+    }
+} )
+```
+```
+npx prisma db seed
+```
+
+#### Dados possíveis via Request
+
++ Body -> Onde está as informações para serem enviadas a rota (Normalmente de uma rota post ou put)
++ Params -> Os dados enviados via URL
++ Query -> Parametros que são enviados via GET, caracterizados com ?
+
 ### CORS
 
 Basicamente, um CORS é utilizado para interpretar que esse determinado backend será utilizado por determinado frontend. Para iniciar essa aplicação, execute:
@@ -148,6 +209,24 @@ Basicamente, um CORS é utilizado para interpretar que esse determinado backend 
 ```
 npm i @fastify/cors
 ```
+
+### ZOD
+
+Uma biblioteca para validar os tipos de dados enviados para um objeto. Para atribuí-la ao projeto, utilize do seguinte comando:
+
+```
+npm i zod
+```
+
+### DayJs
+
+Uma biblioteca para trabalhar com datas devido a necessidade de usar apenas a data informada e não a Data e Hora que o método **new Date()** proporciona. Para ativá-la no projeto, utilize:
+
+```
+npm i dayjs
+```
+
+Obs: Ao registrar uma data no banco, ele será irá registrar como UTC-3, ou seja, mesmo que você envie uma data sem hora, ele irá atribuir a data da meia noite + 3 horas.
 
 ## Front-End
 
@@ -224,6 +303,18 @@ Apenas considere os arquivos dentro da pasta src que dentro dessa estrutura, con
 E a segunda linha para que seja possivel usá-lo dentro do arquivo .html base do projeto.
 
 Resumidamente, o tailwind permite que colocamos algumas propriedades css dentro do proprio className do componente.
+
+#### Icones
+
+Para a utilização de icones, existem diversas bibliotecas, mas essa em específico foi recomendada para esse projeto. Para utilizá-la:
+
+```
+npm i phosphor-react
+```
+
+#### DayJs
+
+Também utilizado no front para tratativa de datas.
 
 ## Mobile
 
@@ -303,8 +394,74 @@ npx expo install expo-font @expo-google-fonts/inter
 
 Obs: qualquer dúvida, utilize a documentação do expo: https://docs.expo.dev/guides/using-custom-fonts/
 
+#### Nativewind
 
+Para definição de estilos através de classes como no Tailwind, usaremos essa biblioteca para fazer o mesmo trabalho feito no frontend React:
 
+```
+npm i nativewind
+npm i tailwind --save-dev
+```
 
+Para a criação do arquivo *tailwind.config.js*, utilize do seguinte comando:
 
+```
+npx tailwindcss init
+```
 
+Assim que é feita a criação do arquivo, é atribuído este conteúdo para o arquivo:
+
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./App.{js,jsx,ts,tsx}", 
+    "./src/**/*.{js,jsx,ts,tsx}"
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: '#09090a'
+      },
+      fontFamily: {
+        regular: 'Inter_400Regular',
+        semibold: 'Inter_600SemiBold',
+        bold: 'Inter_700Bold',
+        extrabold: 'Inter_800ExtraBold',
+      }
+    },
+  },
+  plugins: [],
+}
+```
+
+Dentro do arquivo *babel.config.js*, atribua a seguinte linha de código dentro do return junto com o parametro já presente do **return**:
+
+```
+plugins: ['nativewind/babel'],
+```
+
+Dentro dos componentes do Native, inicialmente ele não irá reconhecer o atributo **className**. Para isso, é necessário criar um arquivo con o seguinte nome *app.d.ts" dentro da pasta src após criar uma pasta @types no caminho atual.
+Esse arquivo terá uma única linha também:
+
+```
+/// <reference types="nativewind/types" />
+```
+
+Obs: Baixe o Tailwind Intelli Sense para ajudar no desenvolvimento com esse framework.
+
+#### Biblioteca para interpretar SVG's
+
+O React Native em si não consegue interpretar SVG's, mas graças a essa biblioteca, ele começa a passar a entender desse caso.
+
+```
+npx expo install react-native-svg
+```
+
+Seguido desse complemento:
+
+```
+npm i react-native-svg-transformer --save-dev 
+```
+
+Um ponto a se resaltar, é que essas bibliotecas de configurações do bundle ou de aplicação, é recomendado que se pare a execução do projeto para as referencias serem atualizadas quando estiverem instaladas.
