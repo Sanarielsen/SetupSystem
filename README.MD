@@ -260,7 +260,25 @@ Exemplo:
 ```
 
 + **Componente:** Reaproveitar ou Isolar um código
-+ **Propriedade:** Uma informação enviada para modificar um componente visual ou comportamentalmente
++ **Propriedade:** Uma informação enviada para modificar um componente visual ou comportamentalmente.
+
+###### Propriedades que herdam objetos
+
+Quando vemos a seguinte situação, onde:
+
+```
+style={{width: "500px"}}
+```
+Existe esse atribuição com duas "{{}}" por causa que essa própriedade está recebendo um objeto, ou seja, se fosse criada um objeto separadamente para depois ser atribuído, seria algo dessa forma:
+
+```
+const styleDiv = {
+
+  width: "500px";
+}
+
+<div style={styleDiv}> Conteúdo </div>
+```
 
 Quando se cria um componente, existe a possibilidade de passar uma função dentro de uma propriedade, porém, não podemos passá-la em formato de execução, porque se não, não passaremos a referencia e sim o valor resultado, exemplo:
 
@@ -347,6 +365,24 @@ Para instalar em especifico um elemento, é necessário usar esse código: (Mas 
 
 ```
 npm install @radix-ui/react-dialog
+```
+
+Antes o componente utilizado era para construir um modal seguimos um agora para construir um popover
+
+```
+npm install @radix-ui/react-popover
+```
+
+Porém, foi construído de forma "manual" para mostrar como faríamos se aplicação fosse acessível.
+
+### CLSX
+
+Nesse projeto, essa biblioteca foi usada para atribuir um style padrão para a nossa aplicação, porém, existe uma segunda atribuição que pode ser enviada via objeto, ou seja, mais de uma condição para atribuir x ou y estilo somado com o anterior.
+
+Para instalar essa biblioteca, usa-se:
+
+```
+npm install clsx
 ```
 
 ## Mobile
@@ -498,3 +534,41 @@ npm i react-native-svg-transformer --save-dev
 ```
 
 Um ponto a se resaltar, é que essas bibliotecas de configurações do bundle ou de aplicação, é recomendado que se pare a execução do projeto para as referencias serem atualizadas quando estiverem instaladas.
+
+#### React Navigation
+
+Para navegar entre páginas dentro da nossa aplicação, será necessário o uso do React Navigator, por isso, utilizaremos dessa biblioteca:
+
+```
+npm install @react-navigation/native
+```
+
+```
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+```
+npm install @react-navigation/native-stack
+```
+
+Dentro do navigator, nao é possivel declarar nomes sem que ele aponte como erro, porque é como se tivesse faltando alguma tipagem pra ele. Ou seja, podemos criar o arquivo *navigation.d.ts" na pasta *@types* com o seguinte conteúdo:
+
+```
+export declare global {
+
+  namespace ReactNavigation {
+
+    interface RootParamList {
+      home: undefined;
+      new: undefined;
+      habit: {
+
+        date: string;
+      }
+    }
+  }
+}
+```
+
+Obs: Pense em dados simples, um id ou uma data, não passe muitas informações via parametro porque pode deixar a tipagem pesada.
+

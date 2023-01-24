@@ -2,6 +2,7 @@ import { View, Text, ScrollView } from 'react-native'
 import { generateDatesFromYearBeginning } from '../utils/generate-dates-from-year-beginning';
 import { Header } from '../components/Header'
 import { HabitDay, DAY_SIZE } from '../components/HabitDay'
+import { useNavigation } from '@react-navigation/native'
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 const datesFromYearStart = generateDatesFromYearBeginning();
@@ -9,6 +10,7 @@ const mininumSummaryDatesSizes = 18 * 5;
 const amountOfDaysToFill = mininumSummaryDatesSizes - datesFromYearStart.length
 
 export function Home() {
+  const { navigate } = useNavigation()
 
   return (
 
@@ -18,7 +20,7 @@ export function Home() {
       <View className="flex-row mt-6 mb-2"> 
       {
         weekDays.map((weekDay, i) => (
-
+                    
           <Text 
             key={`${weekDay}`+`${i}`}
             className='text-zinc-400 text-nl font-bold text-center mx-1'
@@ -35,24 +37,28 @@ export function Home() {
         contentContainerStyle={{paddingBottom: 100}}
       >
       <View className='flex-row flex-wrap'>
-      {
-        datesFromYearStart.map(date => (
-         
-          <HabitDay key={date.toISOString()}/>
-        ))
-      }
-      {
-        amountOfDaysToFill > 0 && Array.from({
-          length: amountOfDaysToFill
-        })
-        .map((_, index) => (
+        {
+          datesFromYearStart.map(date => (
+          
+            <HabitDay 
+              key={date.toISOString()}
+              onPress={() => navigate('habit', { date: date.toISOString() })}
+            />
+          ))
+        }
+        {
+          amountOfDaysToFill > 0 && Array.from({
+            length: amountOfDaysToFill
+          })
+          .map((_, index) => (
 
-          <View
-          className="bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800 opacity-40"
-          style={{ width: DAY_SIZE, height: DAY_SIZE }}
-           />
-        ))
-      }
+            <View
+              key={index}
+              className="bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800 opacity-40"
+              style={{ width: DAY_SIZE, height: DAY_SIZE }}
+            />
+          ))
+        }
       </View>
       </ScrollView>
 
