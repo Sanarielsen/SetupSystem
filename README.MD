@@ -291,6 +291,10 @@ onClick={submitInfo}
 onClick={submitInfo()}
 ```
 
+#### Tipos de parametros de um método
+
+Para descobrir um determinado tipo de parametro que uma função pre-determinada como o **onSubmit** considera para assim criar o **event** desse elemento, aperte CTRL+clique para acessar as propriedades desse método que no caso é **onSubmit(função)**
+
 #### Imperativa e Declarativa
 
 Imperativa -> Passa exatamente o que a aplicação precisa fazer para fazer determinada ação.
@@ -345,6 +349,12 @@ E a segunda linha para que seja possivel usá-lo dentro do arquivo .html base do
 
 Resumidamente, o tailwind permite que colocamos algumas propriedades css dentro do proprio className do componente.
 
+#### Data Props
+
+Existem algumas propriedades dentro do HTML que possuem props como por exemplo o **class**, porém, existem algumas props que possuem o **data-** em sua composição inicial, elas são chamadas de **Data Props**, podemos usar o javascript para gerenciar e atribuir um elemento através delas.
+
+Com o uso do tailwind, é possivel acessar propriedades de componentes que ainda não foram criados, que normalmente são gerados por outros componentes dentro de uma aplicação, usando uma tag inicial no pai de todos eles, por exemplo **group** e ao decorrer da aplicação, utilize em seus filhos o seguinte prefixo **group-data-[prop=state]:"classTailwind"** para acessar quais valores serão necessários para executar determinado estilo que pode ser colocado após os **:**.
+
 #### Icones
 
 Para a utilização de icones, existem diversas bibliotecas, mas essa em específico foi recomendada para esse projeto. Para utilizá-la:
@@ -375,6 +385,12 @@ npm install @radix-ui/react-popover
 
 Porém, foi construído de forma "manual" para mostrar como faríamos se aplicação fosse acessível.
 
+Seguindo a mesma ideia de construir um componente do zero tendo todas as variáveis para que tenhamos um sistema acessível, usaremos o comboBox do Radix também, dessa forma:
+
+```
+npm install @radix-ui/react-checkbox
+```
+
 ### CLSX
 
 Nesse projeto, essa biblioteca foi usada para atribuir um style padrão para a nossa aplicação, porém, existe uma segunda atribuição que pode ser enviada via objeto, ou seja, mais de uma condição para atribuir x ou y estilo somado com o anterior.
@@ -384,6 +400,58 @@ Para instalar essa biblioteca, usa-se:
 ```
 npm install clsx
 ```
+
+### Axios
+
+Existem formas e formas para se conectar com uma API externa usando de um front-end (fetch with xmlParser é um exemplo). Nesse contexto, usaremos da seguinte biblioteca para construir essa conexão:
+
+```
+npm i axios
+```
+
+Crie uma pasta chamada **lib** ou **api** para armazenar os códigos correspondentes a essa conexão entre front e API.
+
+### Hook: useEffect()
+
+Dentro de uma estrutura react, temos o seguinte código:
+
+```js
+export function ComponentName() {
+
+  return (
+
+      //code
+  )
+}
+```
+
+Ao criar variáveis fora da **function**, essas variáveis não enxergarão valores de dentro do componente, mas o contrário sim. Por isso que 99% das vezes, chamadas API serão executadas dentro do componente, mas fora do return, como por exemplo:
+
+```js
+export function ComponentName() {
+
+  api.get('...')
+
+  return (
+
+      //code
+  )
+}
+```
+
+O maior problema é que TODA alteração visual, faz recarregar as informações dentro desse componente, incluindo os dados fora do return, por isso, para situações dessa maneira, é usado o useEffect() (por enquanto)
+
+O useEffect é composto por dois argumentos, onde:
++ **Função de execução:** A função que irá ser executada
++ **Vetor de referencia:** O estado ou variável que será considerado para caso este mudar, essa função passada anteriormente ser executada
+
+Exemplo:
+
+```js
+useEffect(() => console.log("Executou"), [state])
+```
+
+Obs: Caso deixemos o vetor de referencia vazio, esse effect só será executado uma vez no carregamento do componente.
 
 ## Mobile
 
@@ -571,4 +639,8 @@ export declare global {
 ```
 
 Obs: Pense em dados simples, um id ou uma data, não passe muitas informações via parametro porque pode deixar a tipagem pesada.
+
+### Axios
+
+Mesma utilização usada no front do web.
 
