@@ -644,3 +644,6 @@ Obs: Pense em dados simples, um id ou uma data, não passe muitas informações 
 
 Mesma utilização usada no front do web.
 
+### CLSX
+
+Mesma utilização usada no front do web.
