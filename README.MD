@@ -647,3 +647,40 @@ Mesma utilização usada no front do web.
 ### CLSX
 
 Mesma utilização usada no front do web.
+
+### React Native Reanimated 
+
+Para realizar as animações dentro do Native, iremos utilizar do React Native Reanimated, para isso, iremos instalar o plugin utilizando o expo, conforme mostrado abaixo:
+
+```
+npx expo install react-native-reanimated
+```
+
+Para uma configuração manual, é necessário colocar uma linha adicional na sessão de plugins em babel.config.js
+
+```js
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      'nativewind/babel', //Essa que já tinha sido adicionada antes
+      'react-native-reanimated/plugin'
+    ],
+  };
+};
+```
+
+Após essa adição, execute o expo junto com a tag --clear para atualizar as referencias desse plugin
+
+```
+npx expo start --clear
+```
+
+Aqui vai algumas anotações sobre os hooks ou actions utilizados nessa aplicação
++ **useAnimatedStyle**: Para referenciar que determinada variável está atrelada a uma mudança/execução de uma animação, atrele ela dentro desse hook.
++ **useSharedValue**: É uma maneira de mostrar que determinada variável trocou de valor para uma outra ser atribuída um mesmo valor, essa usada para a animação.
++ **withTiming**: É um tipo de animação que pode ser atribuída a uma variavel referencia que mostra o quanto ela será animada.
++ **withDelay**: É o tempo que você dará para a animação ser executada. (Exemplo: 500milisegundos para executar a animação dentro desse método)
+
+Normalmente, é usado propriedades css para atribuição dessa animação, no react-native, é usado esse plugin para esse trabalho.
