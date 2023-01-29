@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
+
+import dayjs from 'dayjs'
+
 import { api } from "../lib/axios"
 import { generateDatesFromYearBeginning } from "../utils/generate-dates-from-year-beginning"
 import { HabitDay } from "./HabitDay"
-import dayjs from 'dayjs'
 
 const weekDays = ['D','S','T','Q','Q','S','S']
 
@@ -11,7 +13,6 @@ const minimumSummaryDatesSize = 18 * 7
 const amountOfDaysToFill = minimumSummaryDatesSize - summaryDates.length
 
 type Summary = {
-
 	id: string;
 	date: string;
 	amount: number;
@@ -40,7 +41,6 @@ export function SummaryTable() {
 			</div>
 			
 			<div className="grid grid-rows-7 grid-flow-col gap-3">
-
 				{summary.length > 0 && summaryDates.map(date => {
 					const dayInSummary = summary.find(day => {
 						return dayjs(date).isSame(day.date, 'day')

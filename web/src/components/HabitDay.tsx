@@ -1,11 +1,11 @@
-import * as Popover from '@radix-ui/react-popover';
-import { ProgressBar } from './ProgressBar';
-import clsx from 'clsx';
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { Check } from 'phosphor-react';
-import dayjs from 'dayjs'
-import { HabitsList } from './HabitsList';
 import { useState } from 'react';
+
+import * as Popover from '@radix-ui/react-popover';
+import clsx from 'clsx';
+import dayjs from 'dayjs'
+
+import { HabitsList } from './HabitsList';
+import { ProgressBar } from './ProgressBar';
 
 interface HabitDayProps {
 
@@ -23,7 +23,6 @@ interface HabitDayProps {
     const dayOfWeek = dayjs(date).format('dddd')
 
     function handleCompletedChanged(completed: number) {
-
       setComplited(completed)      
     }
   
@@ -41,9 +40,7 @@ interface HabitDayProps {
         </Popover.Trigger>
 
         <Popover.Portal>
-
           <Popover.Content className="min-w-[320px] w-full p-6 rounded-2xl bg-zinc-900 flex flex-col">
-
             <span className="font-semibold text-zinc-400"> {dayOfWeek} </span>
             <span className="mt-1 font-extrabold leading-tight text-3xl"> {dateAndMonth} </span>
 

@@ -1,8 +1,10 @@
-import * as Checkbox from "@radix-ui/react-checkbox";
-import { Check } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { api } from '../lib/axios'
+
+import { Check } from "phosphor-react";
+import * as Checkbox from "@radix-ui/react-checkbox";
 import dayjs from "dayjs";
+
+import { api } from '../lib/axios'
 
 interface HabitListProps {
 
@@ -21,11 +23,9 @@ interface HabitsInfo {
 }
 
 export function HabitsList({ date, onCompletedChange }: HabitListProps) {
-
   const [habitsInfo, setHabitsInfo] = useState<HabitsInfo>()
 
   useEffect(() => {
-
     api.get('day', {
 
       params: {
@@ -68,7 +68,6 @@ export function HabitsList({ date, onCompletedChange }: HabitListProps) {
       <div className='mt-6 flex flex-col gap-3'>
         { habitsInfo?.possibleHabits.map( (habit) => {
           return (
-
             <Checkbox.Root
               key={habit.id}
               defaultChecked={habitsInfo.completedHabits.includes(habit.id)}
